@@ -5,6 +5,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -24,10 +25,14 @@ public class MainActivity extends AppCompatActivity {
         ImageView basidiomycota = findViewById(R.id.basidiomycota);
         ImageView deuteromycota = findViewById(R.id.deuteromycota);
         ImageView zygomycota = findViewById(R.id.zygomycota);
+        ImageView daftarpuskta = findViewById(R.id.daftarpustaka);
+
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.button);
 
         ascomycota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 Intent intent = new Intent(MainActivity.this, ContentActivity.class);
                 intent.putExtra(ContentActivity.URL, "http://wongselo.com/jamur/divisi/jamur/ascomycota");
                 intent.putExtra(ContentActivity.TITLE, "Ascomycota");
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         basidiomycota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 Intent intent = new Intent(MainActivity.this, ContentActivity.class);
                 intent.putExtra(ContentActivity.URL, "http://wongselo.com/jamur/divisi/jamur/basidiomycota");
                 intent.putExtra(ContentActivity.TITLE, "Basidiomycota");
@@ -48,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         deuteromycota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 Intent intent = new Intent(MainActivity.this, ContentActivity.class);
                 intent.putExtra(ContentActivity.URL, "http://wongselo.com/jamur/divisi/jamur/deuteromycota");
                 intent.putExtra(ContentActivity.TITLE, "Deuteromycota");
@@ -58,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         zygomycota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 Intent intent = new Intent(MainActivity.this, ContentActivity.class);
                 intent.putExtra(ContentActivity.URL, "http://wongselo.com/jamur/divisi/jamur/zygomycota");
                 intent.putExtra(ContentActivity.TITLE, "Zygomycota");
@@ -65,6 +73,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        daftarpuskta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mp.start();
+                Intent intent = new Intent(MainActivity.this, ContentActivity.class);
+                intent.putExtra(ContentActivity.URL, "http://wongselo.com/jamur/divisi/jamur/daftarpustaka");
+                intent.putExtra(ContentActivity.TITLE, "Daftar Pustaka");
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

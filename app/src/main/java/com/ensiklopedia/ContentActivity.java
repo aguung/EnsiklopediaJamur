@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -23,7 +24,7 @@ public class ContentActivity extends AppCompatActivity {
     public static final String URL = "URL";
     public static final String TITLE = "TITLE";
     private WebView web;
-
+    private  MediaPlayer mp;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -38,10 +39,13 @@ public class ContentActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle(title);
 
+        mp = MediaPlayer.create(this, R.raw.button);
+
         web = findViewById(R.id.webView);
         WebSettings settings = web.getSettings();
         web.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                mp.start();
                 view.loadUrl(url);
                 return false; // then it is not handled by default action
             }
@@ -67,6 +71,7 @@ public class ContentActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
+        mp.start();
         return true;
     }
 
