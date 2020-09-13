@@ -4,7 +4,7 @@
     package="com.ensiklopedia">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -15,8 +15,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
+        <activity android:name=".TujuanActivity"></activity>
 
-        <service android:enabled="true" android:name=".BackgroundSoundService" />
+        <service
+            android:name=".BackgroundSoundService"
+            android:enabled="true" />
 
         <activity android:name=".ContentActivity" />
         <activity
